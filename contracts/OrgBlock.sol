@@ -8,10 +8,8 @@ contract OrgBlock {
   struct User {
       uint id;
       string s;
-      uint reputation;
-      uint amount_recieved;
-      uint amount_spent;
-      uint amount_remaining;
+      uint reputation, amount_recieved;
+      uint amount_spent, amount_remaining;
       address user_addr;
       uint latest_transaction;
     }
@@ -28,8 +26,7 @@ contract OrgBlock {
     User fromOrg;
     User toRetail;
     string purpose;
-    uint amountSpent;
-    uint expValidity;
+    uint amountSpent, expValidity;
     uint id;
   }
 
