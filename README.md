@@ -30,42 +30,61 @@ app.getUsers()
 
 
 ### Simulate donation
+
+app.addDonation(org_id, don_id,  <message>, amount, sender_address)<br />
 app.addDonation(1, 7,  "Because I am batman", 5000, {from: web3.eth.accounts[3]})<br />
 > fails! only PaymentGateway can create the transaction block<br /><br />
+
 
 app.addDonation(1, 7,  "Because I am batman", 5000, {from: web3.eth.accounts[0]}) <br />
 > transaction with id=1 created.<br />
 
 ### Participants validate the transaction block 
 #### (validity is to ensure the block integrity. v = 3.  PGateway, Sender, Reciever)
+app.getDonValidity( t_id )  <br />
 app.getDonValidity( 1 )  <br />
 > transaction_id = 1, validity must be = 1<br />
 
+app.validateDonation(org_id, t_id)  <br />
 app.validateDonation(1, 1)  <br />
 > Wikipedia acknowledges the transaction.<br />
 
 
+app.validateDonation(don_id, t_id)  <br />
 app.validateDonation(7, 1)<br />
 > Batman acknowledges the transaction.<br />
 
+app.getDonValidity( t_id )  <br />
 app.getDonValidity( 1 )<br />
 > must be 3!<br />
 
 ### Check the balance
-app.getAmountRecieved( 1 )<br />
+app.getAmountRecieved( org_id )<br />
+app.getAmountRecieved( 1 )<br /><br />
+
+app.getAmountRecieved( org_id )<br />
 app.getAmountRemaining( 1 )<br />
 
 ### Simulate expense
+app.addExpense(org_id, vend_id, message, amount)<br />
 app.addExpense(1, 4, "Wikipedia is yet to decentralize :/ ", 2000)<br />
 
 
 ### Participants validate the transaction block 
 #### (validity must be 3! PGateway, Sender, Reciever)
-app.validateExpense(1, 1)<br />
-app.validateExpense(4, 1)<br />
-app.getExpValidity( 1 )<br /><br />
+app.validateExpense(org_id, t_id)  <br />
+app.validateExpense(1, 1)<br /><br />
+
+app.validateExpense(don_id, t_id)  <br />
+app.validateExpense(4, 1)<br /><br />
+
+app.getDonValidity( t_id )  <br />
+app.getExpValidity( 1 )<br />
 > must be 3!<br /><br />
 
+
+### Check the balance
+app.getAmountRemaining( org_id )<br />
 app.getAmountRemaining( 1 )<br />
 
 
