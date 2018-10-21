@@ -3,6 +3,7 @@ UCI Blockathon 2018
 
 ### Start truffle console
 truffle console
+migrate --reset
 
 ### Create the app instance
 OrgBlock.deployed().then(function(instance){app = instance})
