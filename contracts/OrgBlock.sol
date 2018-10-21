@@ -135,6 +135,27 @@ contract OrgBlock {
   }
 
 
+  function validateExpense(uint u_id, uint t_id) public{
+      for(uint i=0; i<usersCount; i++){
+          if(u_id == users[i].id)
+            break;
+      }
+      require(users[i].latest_transaction == t_id);
+      for(i=0; i<expensesCount; i++){
+          if(t_id == expenses[i].id)
+            break;
+      }
+      expenses[i].expValidity++;
+  }
+
+  function getExpValidity(uint t_id) public view returns(uint) {
+      for(uint i=0; i<expensesCount; i++){
+          if(t_id == expenses[i].id)
+            break;
+      }
+      return expenses[i].expValidity;
+  }
+
   function getAmountRecieved(uint org_id) public view returns(uint){
       for(uint i=0; i<usersCount; i++){
           if(org_id == users[i].id)
