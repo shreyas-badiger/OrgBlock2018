@@ -8,18 +8,21 @@ truffle console
 OrgBlock.deployed().then(function(instance){app = instance})
 
 ### Create users
-1,2,3, app.addUser("Organization", 0, 0, 0)<br />
-4,5,6, app.addUser("Retail", 0, 0, 0)<br />
-7,8,9,10, app.addUser("Donor", 0, 0, 0)<br />
-
-Consider,<br />
-1 - Wikimedia,  2 - Americare,  3 - Republicans<br />
-4 - AWS,  5 - Walmart, 6 - Bren Event mgmt.<br />
-7 - Batman <br />
+app.addUser("Organization", 0, 0, 0)<br />
+app.addUser("Retail", 0, 0, 0)<br />
+app.addUser("Donor", 0, 0, 0)<br />
 
 <br />
 ![Alt text](https://github.com/hard-fault/OrgBlock2018/image.png)
 <br />
+
+
+Consider,<br />
+1 - Wikimedia,  2 - Americare,  3 - Republicans<br /><br />
+4 - AWS,  5 - Walmart, 6 - Bren Event mgmt.<br /><br />
+7 - Batman <br />
+
+
 
 ### Simulate donation
 app.addDonation(1,7,"Thanks Wiki",5000, {from: web3.eth.accounts[3]})<br />
