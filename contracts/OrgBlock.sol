@@ -8,8 +8,10 @@ contract OrgBlock {
   struct User {
       uint id;
       string s;
-      uint reputation, amount_recieved;
-      uint amount_spent, amount_remaining;
+      uint reputation;
+      uint amount_recieved;
+      uint amount_spent;
+      uint amount_remaining;
       address user_addr;
       uint latest_transaction;
     }
@@ -26,7 +28,8 @@ contract OrgBlock {
     User fromOrg;
     User toRetail;
     string purpose;
-    uint amountSpent, expValidity;
+    uint amountSpent;
+    uint expValidity;
     uint id;
   }
 
@@ -92,9 +95,10 @@ contract OrgBlock {
           if(org_id == users[i].id)
             break;
       }
-      users[i].amount_spent += amountSpent;
-      users[i].amount_remaining -= amountSpent;
+      require(amountSpent <= users[i].amount_remaining);
 
+      users[i].amount_remaining -= amountSpent;
+      users[i].amount_spent += amountSpent;
 
       for(uint j=0; j<usersCount; j++){
           if(retail_id == users[j].id)
@@ -111,6 +115,7 @@ contract OrgBlock {
   }
 
   function validateDonation(uint u_id, uint t_id) public{
+      
       for(uint i=0; i<usersCount; i++){
           if(u_id == users[i].id)
             break;
@@ -120,6 +125,8 @@ contract OrgBlock {
           if(t_id == donations[i].id)
             break;
       }
+      users[i].latest_transaction = 0;
+      require(donations[i].donValidity < 3);
       donations[i].donValidity++;
   }
 
@@ -142,6 +149,8 @@ contract OrgBlock {
           if(t_id == expenses[i].id)
             break;
       }
+      users[i].latest_transaction = 0;
+      require(expenses[i].expValidity < 3);
       expenses[i].expValidity++;
   }
 

@@ -1,3 +1,4 @@
+$VERBOSE = null;
 var OrgBlock = artifacts.require("OrgBlock");
 
 module.exports = function(deployer) {
