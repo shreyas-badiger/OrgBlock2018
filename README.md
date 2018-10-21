@@ -20,6 +20,7 @@ app.addUser("Donor", 0, 0, 0)<br />
 
 
 Consider,<br />
+0 - PaymentGateway <br /><br />
 1 - Wikimedia,     2 - Americare,     3 - Republicans<br /><br />
 4 - AWS,     5 - Walmart,    6 - Bren Event mgmt.<br /><br />
 7 - Batman <br />
