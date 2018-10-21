@@ -13,7 +13,7 @@ OrgBlock.deployed().then(function(instance){app = instance})
 ![Alt text](https://github.com/hard-fault/OrgBlock2018/blob/master/image.png)
 
 app.addUser("Organization", 0, 0, 0)<br />
-app.addUser("Retail", 0, 0, 0)<br />
+app.addUser("Vendor", 0, 0, 0)<br />
 app.addUser("Donor", 0, 0, 0)<br />
 
 
