@@ -13,7 +13,7 @@ app.addUser("Retail", 0, 0, 0)<br />
 app.addUser("Donor", 0, 0, 0)<br />
 
 <br />
-![Alt text](https://github.com/hard-fault/OrgBlock2018/image.png)
+![Alt text](https://github.com/hard-fault/OrgBlock2018/blob/master/image.png)
 <br />
 
 
