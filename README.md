@@ -37,7 +37,7 @@ app.addDonation(1, 7,  "Because I am batman", 5000, {from: web3.eth.accounts[0]}
 > transaction with id=1 created.<br />
 
 ### Participants validate the transaction block 
-#### (validity must be 3! PGateway, Sender, Reciever)
+#### (validity is to ensure the block integrity. v = 3.  PGateway, Sender, Reciever)
 app.getDonValidity( 1 )  <br />
 > transaction_id = 1, validity must be = 1<br />
 
@@ -46,7 +46,7 @@ app.validateDonation(1, 1)  <br />
 
 
 app.validateDonation(7, 1)<br />
-> Donald acknowledges the transaction.<br />
+> Batman acknowledges the transaction.<br />
 
 app.getDonValidity( 1 )<br />
 > must be 3!<br />
