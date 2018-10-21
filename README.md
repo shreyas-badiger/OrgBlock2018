@@ -60,7 +60,7 @@ app.addExpense(1, 4, "We are yet to decentralize :/ ", 2000)<br />
 ### Participants validate the transaction block 
 #### (validity must be 3! PGateway, Sender, Reciever)
 app.validateExpense(1, 1)<br />
-app.validateDonation(4, 1)<br />
+app.validateExpense(4, 1)<br />
 app.getExpValidity( 1 )<br /><br />
 > must be 3!<br /><br />
 
