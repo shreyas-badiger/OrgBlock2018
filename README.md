@@ -70,7 +70,8 @@ app.getAmountRemaining( 1 )<br />
 
 
 ### Why would one join OrgBlock(Because it is a win-win! strategy)
-##### Decentralized automated rating for the Non-profits.
+##### Easy to integrate
+##### Decentralized and automated rating for the Non-profits.
 ##### Donors are encouraged to donate (it's transparent).
 ##### Everyone in chain gets incentivized for participating.
 
