@@ -23,13 +23,14 @@ Consider,<br />
 
 
 ### Simulate donation
-app.addDonation(1,7,"Thanks Wiki",5000, {from: web3.eth.accounts[3]})<br />
+app.addDonation(1,7,"Because I am batman",5000, {from: web3.eth.accounts[3]})<br />
 > fails! only PaymentGateway can create the transaction block<br /><br />
 
-app.addDonation(1,7,"Thanks Wiki",5000, {from: web3.eth.accounts[0]}) <br />
+app.addDonation(1,7,"Because I am batman",5000, {from: web3.eth.accounts[0]}) <br />
 > transaction with id=1 created.<br />
 
-### Participants validate the transaction block (validity must be 3! PGateway, Sender, Reciever)
+### Participants validate the transaction block 
+#### (validity must be 3! PGateway, Sender, Reciever)
 app.getDonValidity(1)  <br />
 > transaction_id = 1, validity must be = 1<br />
 
@@ -51,7 +52,8 @@ app.getAmountRemaining(1)<br />
 app.addExpense(1, 4, "Blankets", 2000)<br />
 app.getAmountRemaining(1)<br />
 
-### Participants validate the transaction block (validity must be 3! PGateway, Sender, Reciever)
+### Participants validate the transaction block 
+#### (validity must be 3! PGateway, Sender, Reciever)
 app.validateExpense(1, 1)<br />
 app.validateDonation(4, 1)<br />
 app.getExpValidity(1)<br /><br />
