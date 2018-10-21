@@ -25,6 +25,9 @@ Consider,<br />
 4 - AWS,     5 - Walmart,    6 - Bren Event mgmt.<br /><br />
 7 - Batman <br />
 
+<br /><br />
+app.getUsers()
+<br /><br />
 
 
 ### Simulate donation
