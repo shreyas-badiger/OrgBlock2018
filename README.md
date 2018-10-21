@@ -2,7 +2,7 @@
 UCI Blockathon 2018
 
 ### Start truffle console
-truffle console
+truffle console<br />
 migrate --reset
 
 ### Create the app instance
