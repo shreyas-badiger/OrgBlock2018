@@ -13,7 +13,6 @@ contract OrgBlock {
     }
 
   struct Donation {
-    User fromDonor;
     User toOrg;
     string donationNote;
     uint amountDonated;
@@ -32,9 +31,9 @@ contract OrgBlock {
   mapping(uint => Donation) public donations;
   mapping(uint => OrgExpense) public expenses;
 
-  uint public usersCount = 0;
-  uint public donationsCount = 0;
-  uint public expensesCount = 0;
+  uint public usersCount;
+  uint public donationsCount;
+  uint public expensesCount;
 
   uType public uT;
 
@@ -45,8 +44,9 @@ contract OrgBlock {
     uint PayG = 1;
 
     usersCount = 0;
-    amount = 0;
-    validity = 0;
+    donationsCount = 0;
+    expensesCount = 0;
+
 
     for (uint i=0; i<Org; i++) {
       addUser("Organization", 0, 0, 0);
@@ -72,17 +72,37 @@ contract OrgBlock {
     return usersCount;
   }
 
-  function addDonation (User _fromDonor, User _toOrg, string _donationNote, uint _amountDonated) public view returns (uint){
+  function addDonation (uint org_id, string donationNote, uint amountDonated) public returns (uint){
+      for(uint i=0; i<usersCount; i++){
+          if(org_id == users[i].id)
+            break;
+      }
+
       donationsCount ++;
-      donations[donationCount] = Donation(_fromDonor, _toOrg, _donationNote, _amountDonated);
-      donations[donationCount].fromDonor.amount_recieved += _amountDonated;
+      donations[donationsCount] = Donation(users[i], donationNote, amountDonated,1);
+      donations[donationsCount].toOrg.amount_recieved += amountDonated;
       return donationsCount;
   }
 
-  function addExpense (User _fromOrg, User _toRetail, string _purpose, uint _amountSpent) public view returns (uint){
+  function addExpense (uint org_id, uint retail_id, string purpose, uint amountSpent) public returns (uint){
+
+      for(uint i=0; i<usersCount; i++){
+          if(org_id == users[i].id)
+            break;
+      }
+
+      for(uint j=0; j<usersCount; j++){
+          if(retail_id == users[j].id)
+            break;
+      }
       expensesCount ++;
-      expenses[expensesCount] = OrgExpense(_fromOrg, _toRetail, _purpose, _amountSpent);
-      expenses[expensesCount].fromDonor.amount_spent += _amountSpent;
+      expenses[expensesCount] = OrgExpense(users[i], users[j], purpose, amountSpent,1);
+      expenses[expensesCount].fromOrg.amount_spent += amountSpent;
+      expenses[expensesCount].toRetail.amount_recieved += amountSpent;
       return expensesCount;
+  }
+
+  function createBlock(string From, string To, string Remark, uint Amount, uint Validity) public returns (string) {
+    return To;
   }
 }
