@@ -2,12 +2,11 @@
 UCI Blockathon 2018
 
 ### Start truffle console
-truffle console<br />
+truffle console
+<br />
 migrate --reset
-
 ### Create the app instance
 OrgBlock.deployed().then(function(instance){app = instance})
-
 ### Create users
 
 ![Alt text](https://github.com/hard-fault/OrgBlock2018/blob/master/image.png)
