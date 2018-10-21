@@ -12,48 +12,31 @@ contract OrgBlock {
       uint amount_spent;
     }
 
-  mapping(uint => User) public users;
-
-  uint public usersCount = 0;
-  uType public uT;
-
   struct Donation {
-    User fromDonorUser;
-    User toOrgUser;
+    User fromDonor;
+    User toOrg;
     string donationNote;
     uint amountDonated;
     uint donationValidity;
   }
 
-  User public fromDonorUser;
-  User public toOrgUser;
-  string public donationNote;
-  uint public amountDonated;
-  uint public donationValidity=1;
-  uint public donationCount = 0;
-  uint public totalDonationAmount=0;
-
-
- function addDonation (User fromDonorUser, User toOrgUser, string donationNote, uint amountDonated) private{
-      donationCount ++;
-      totalDonationAmount+=amountDonated;
-      Donations[donationCount] = User(usersCount, _s, _reputation, _amount_recieved, _amount_spent);
-  }
-
-  struct OrgExpenditure {
-    User fromOrgUser;
-    User toRetaiUser;
-    String purpose;
+  struct OrgExpense {
+    User fromOrg;
+    User toRetail;
+    string purpose;
     uint amountSpent;
     uint expValidity;
   }
 
-    string public fromOrgUser;
-    string public toOrgUser;
-    string public purpose;
-    uint public amountSpent;
-    uint public expValidity=1;
+  mapping(uint => User) public users;
+  mapping(uint => Donation) public donations;
+  mapping(uint => OrgExpense) public expenses;
 
+  uint public usersCount = 0;
+  uint public donationsCount = 0;
+  uint public expensesCount = 0;
+
+  uType public uT;
 
   constructor() public {
     uint Org = 3;
@@ -89,18 +72,17 @@ contract OrgBlock {
     return usersCount;
   }
 
-  function createBlock(string From, string To, string Remark, uint Amount, uint Validity) public returns (string) {
-    from = From;
-    to = To;
-    remark = Remark;
-    amount = Amount;
-    validity = Validity;
-
-    return to;
+  function addDonation (User _fromDonor, User _toOrg, string _donationNote, uint _amountDonated) public view returns (uint){
+      donationsCount ++;
+      donations[donationCount] = Donation(_fromDonor, _toOrg, _donationNote, _amountDonated);
+      donations[donationCount].fromDonor.amount_recieved += _amountDonated;
+      return donationsCount;
   }
 
-  function totalAmountRecieved() public view returns (uint) {
-    return amount;
+  function addExpense (User _fromOrg, User _toRetail, string _purpose, uint _amountSpent) public view returns (uint){
+      expensesCount ++;
+      expenses[expensesCount] = OrgExpense(_fromOrg, _toRetail, _purpose, _amountSpent);
+      expenses[expensesCount].fromDonor.amount_spent += _amountSpent;
+      return expensesCount;
   }
-
 }
