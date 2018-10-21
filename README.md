@@ -1,4 +1,4 @@
-# OrgBlock2018
+# OrgBlock2018 (Crowdfunding platform)
 UCI Blockathon 2018
 
 ### Start truffle console
